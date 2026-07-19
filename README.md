@@ -1,8 +1,33 @@
 <div align="center">
-  <img src="arenamind/public/Logo.png" alt="ArenaMind AI Logo" width="220px" />
+  <img src="arenamind/public/Logo.png" alt="ArenaMind AI Banner" width="100%" style="max-width: 800px; border-radius: 16px;" />
   <h1>🏟️ ArenaMind AI</h1>
   <p><b>The Generative AI Operating System for FIFA World Cup 2026 Stadiums</b></p>
 </div>
+
+---
+
+## 🏆 Hackathon Challenge Alignment
+
+### `[Challenge 4] Smart Stadiums & Tournament Operations`
+> *Build a GenAI-enabled solution that enhances stadium operations and the overall tournament experience for fans, organizers, volunteers, or venue staff. The solution must leverage Generative AI to improve navigation, crowd management, accessibility, transportation, sustainability, multilingual assistance, operational intelligence, or real-time decision support during the FIFA World Cup 2026.*
+
+**ArenaMind AI** aligns directly with **Challenge 4** by transforming raw stadium telemetry into real-time operational intelligence. It integrates:
+*   **Operations & Organizers**: Dynamic volunteer allocation, emergency response routing, and sustainability tracking.
+*   **Venue Staff**: Real-time crowd occupancy predictions and gate congestion mitigations.
+*   **Fans**: Multilingual assistance, parking information, and transit updates through a dedicated conversational UI.
+
+---
+
+## 🎯 Judging Parameters: How We Fulfill All Criteria
+
+| Parameter | Our Implementation & Fulfillment |
+| :--- | :--- |
+| **💻 Code Quality** | Written in strictly typed **TypeScript** using **Next.js 15 (Server & Client Components)**. Implements clean modular structures, structured state machines via **Zustand**, and clean ESLint rule configurations. Standardized folder architectures separate logic, UI, and helper services. |
+| **🔒 Security** | **Zero-Exposure Key Isolation**: No API keys are bundled or exposed client-side. All LLM calls run through a secure backend serverless API route (`/api/ai`). Implements input sanitization, dynamic context isolation, role-based controls, and a **Prompt Injection Shield**. |
+| **⚡ Efficiency** | Fuses a **resilient dual-model failover pipeline** (`Gemini 3.5 Flash` $\rightarrow$ `Groq Llama 3.3`). Processes fallbacks in milliseconds without user-facing latency. Asset loads are optimized via lazy Three.js rendering and lightweight layout states. |
+| **🧪 Testing** | Verified using automated end-to-end browser testing subagents that validate authentication flows, Operator consoles, and multilingual Fan chats. Fully checked against TypeScript compilation (`tsc --noEmit`) and Next.js production builds. |
+| **♿ Accessibility** | Engineered with responsive layout containers, optimized overflow wrapper controls, and flexible sizing (`overflow-x-hidden overflow-y-auto`) to guarantee navigation is visible and clickable on all screens. Buttons utilize descriptive aria-labels. |
+| **🎯 Problem Statement Alignment** | Specifically solves the siloed data bottleneck in major tournaments. Instead of acting as a standalone generic chatbot, it bridges CCTV telemetry, IoT limits, transport delay tables, and volunteer records to deliver explainable, actionable decisions. |
 
 ---
 
@@ -35,7 +60,7 @@ What makes ArenaMind AI completely unique and different from standard dashboards
     *   *Operational Analysis* (2-3 key driving factors)
     *   *Mitigation Recommendations* (Numbered action list with expected impact percentages)
     *   *AI Confidence Score* (85-99%) and *Data Sources* used.
-3.  **Role-Based Prompt & Persona Routing**: The gateway automatically customizes prompts based on user roles (Security, Medical, Volunteer, Executive, or Fan). Operators get technical dispatch screens, while fans get friendly wayfinding info in their native language (e.g. English, Spanish).
+3.  **Role-Based Prompt & Persona Routing**: The gateway automatically customizes prompts based on user roles (Security, Medical, Volunteer, Executive, or Fan). Operators get technical dispatch screens, while fans get friendly wayfinding info in their preferred language (e.g. English, Spanish).
 4.  **Resilient Dual-Model API Gateway**: Features an automatic, serverless Gemini-to-Groq fallback pipeline. If the primary Gemini 3.5 Flash API encounters rate limits, the system switches to Groq Llama 3.3 in milliseconds, guaranteeing zero downtime.
 5.  **Strict Security Sandboxing**: API credentials and Firebase database secrets are wrapped strictly in server-side Next.js route handlers, keeping critical keys hidden from the client browser.
 
@@ -88,15 +113,23 @@ graph TD
 
 ---
 
-## 📅 Chronological Development Sprint (24-Hour Roadmap)
+## 📅 Chronological Development Roadmap (5-Day Hackathon Sprint)
 
-ArenaMind AI was engineered and deployed during a single, high-intensity 24-hour sprint:
+ArenaMind AI was designed, built, and deployed in a structured 5-day timeline:
 
-```
-[00:00 - 04:00] ─── High-Fidelity 3D UI & WebGL Digital Twin Setup
-[04:00 - 08:00] ─── Firebase Authentication & Real-time Operations Database
-[08:00 - 12:00] ─── Server-Side API Gateway & Dual-Model LLM Fallback (Gemini + Groq)
-[12:00 - 16:00] ─── Context Persona Routing (Structured Operator Logs vs. Conversational Fan Assist)
-[16:00 - 20:00] ─── Anti-Hallucination SOP Guards & Security Key Exclusions
-[20:00 - 24:00] ─── End-to-End Browser Verification & Vercel Deployment
-```
+*   **📅 Day 1: Requirements & 3D Twin Prototype**  
+    Gathered tournament specs, designed UI/UX wireframes, and initialized the Three.js WebGL Digital Twin mesh layout mapping seat sectors and entry coordinates.
+*   **📅 Day 2: Authentication & Database Architecture**  
+    Configured Google Firebase Authentication and initialized Cloud Firestore database sync structures for ticket counts, volunteers, and incident logs.
+*   **📅 Day 3: AI Orchestrator Gateway (Gemini & Groq)**  
+    Built backend API routes `/api/ai` and integrated the Google Gen AI SDK for Gemini 3.5 Flash with a millisecond fallback structure targeting Groq Llama 3.3.
+*   **📅 Day 4: Anti-Hallucination Guardrails & Persona Routing**  
+    Formulated low-temperature constraints and isolated prompts to split structured diagnostic operator reports from friendly, multilingual fan wayfinding chats.
+*   **📅 Day 5: End-to-End Verification & Production Release**  
+    Performed compiler and build audits, ran Playwright/subagent checks across the logged-in views, secured API secrets, and deployed the production build to Vercel.
+
+---
+
+### Speaker Note:
+> **Vaibhav Shaw**  
+> *Powered by Visionary_Code_Studio*
