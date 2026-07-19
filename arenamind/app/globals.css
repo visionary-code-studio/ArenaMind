@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --cyan: #00f5ff;
+  --gold: #F5A623;
+  --glass-bg: rgba(8, 14, 24, 0.55);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-blur: blur(24px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #020205;
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #020205; }
+::-webkit-scrollbar-thumb { background: #00f5ff33; border-radius: 2px; }
+
+/* Glass panel */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+.glass-hover {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.glass-hover:hover {
+  border-color: rgba(0,245,255,0.3);
+  box-shadow: 0 0 20px rgba(0,245,255,0.08);
+}
+
+/* Pitch grid overlay */
+.pitch-grid {
+  background-image:
+    linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Scan lines */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.05) 2px,
+    rgba(0,0,0,0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glow */
+.glow-cyan { box-shadow: 0 0 20px rgba(0,245,255,0.3); }
+.glow-gold { box-shadow: 0 0 20px rgba(245,166,35,0.3); }
+.text-cyan { color: #00f5ff; }
+.text-gold { color: #F5A623; }
+.border-cyan { border-color: #00f5ff; }
+.border-gold { border-color: #F5A623; }
+
+/* Pulse dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
+
+/* AI typing cursor */
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+.ai-cursor::after { content: '|'; animation: blink 1s infinite; color: #00f5ff; }
+
+/* Orbit rotation */
+@keyframes orbit-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes orbit-counter { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+.orbit-slow { animation: orbit-slow 20s linear infinite; }
+.orbit-counter { animation: orbit-counter 15s linear infinite; }
+.orbit-fast { animation: orbit-slow 8s linear infinite; }
+
+/* Stadium particle */
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+  33% { transform: translateY(-8px) translateX(4px); opacity: 1; }
+  66% { transform: translateY(4px) translateX(-4px); opacity: 0.4; }
+}
+.particle { animation: float-particle 3s ease-in-out infinite; }
+
+/* Reveal animations */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.7s ease-out forwards; }
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-left { animation: slide-in-left 0.6s ease-out forwards; }
+
+/* Heatmap colors */
+.heat-green { background: rgba(34,197,94,0.6); }
+.heat-yellow { background: rgba(234,179,8,0.6); }
+.heat-orange { background: rgba(249,115,22,0.6); }
+.heat-red { background: rgba(239,68,68,0.8); }
+
+/* Counter animation */
+@keyframes count-up { from { opacity: 0; } to { opacity: 1; } }
+.count-up { animation: count-up 1s ease forwards; }
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(0,245,255,0.1) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Status indicator */
+.status-online { color: #22c55e; }
+.status-warning { color: #eab308; }
+.status-critical { color: #ef4444; }
+
+/* Font mono HUD */
+.font-hud { font-family: 'JetBrains Mono', monospace; }
+
+/* Light Theme Overrides */
+.light, .light body {
+  background: #f0f4f8 !important;
+  color: #0f111a !important;
+}
+.light .glass {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6, .light p:not(.text-green-400):not(.text-red-400), .light td, .light th {
+  color: #0f111a !important;
+}
+.light .text-white\/70, .light .text-white\/60, .light .text-white\/50, .light .text-white\/40, .light .text-white\/30, .light .text-white\/20, .light .text-white\/25 {
+  color: rgba(15, 17, 26, 0.65) !important;
+}
+.light .bg-white\/5, .light .bg-white\/3, .light .bg-white\/10, .light .bg-white\/8 {
+  background: rgba(15, 17, 26, 0.05) !important;
+}
+.light .bg-black\/40, .light .bg-black\/60, .light .bg-black\/80 {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+.light .border-white\/10, .light .border-white\/5, .light .border-white\/8, .light .border-white\/15, .light .border-t {
+  border-color: rgba(15, 17, 26, 0.1) !important;
+}
+.light button:not(.bg-\[\#00f5ff\]):not(.bg-red-500) {
+  color: #0f111a !important;
+}
+.light input, .light select, .light textarea {
+  background: rgba(15, 17, 26, 0.05) !important;
+  border-color: rgba(15, 17, 26, 0.15) !important;
+  color: #0f111a !important;
+}
+.light input::placeholder, .light textarea::placeholder {
+  color: rgba(15, 17, 26, 0.4) !important;
+}
+.light .fixed.bottom-0 {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-top-color: rgba(15, 17, 26, 0.1) !important;
+}
+.light .fixed.bottom-0 span, .light .fixed.bottom-0 div {
+  color: rgba(15, 17, 26, 0.8) !important;
+}
+.light .fixed.bottom-0 .text-[#00f5ff] {
+  color: #0088cc !important;
+}
+.light .bg-[#0f111a]\/80 {
+  background: rgba(255, 255, 255, 0.85) !important;
+}
+.light .pitch-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px) !important;
+}
+

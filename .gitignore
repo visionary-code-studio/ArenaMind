@@ -1,0 +1,34 @@
+# Next.js build and dependencies
+arenamind/.next/
+arenamind/node_modules/
+arenamind/out/
+arenamind/build/
+
+# Local env files containing API secrets
+.env
+.env.local
+arenamind/.env.local
+arenamind/.env.production
+arenamind/.env.development
+arenamind/.env.test
+
+# Recovered temporary backup files
+*.recovered
+app.js.recovered
+firebase.js.recovered
+index.html.recovered
+style.css.recovered
+
+# Documentation texts as requested
+docs_text/
+
+# IDE and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+node_modules/
+.git/
+.agents/
+.gemini/
+.antigravity-ide/
