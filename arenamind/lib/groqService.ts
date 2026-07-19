@@ -1,4 +1,4 @@
-const GROQ_KEY = process.env.NEXT_PUBLIC_GROQ_KEY || '';
+const GROQ_KEY = process.env.GROQ_KEY || process.env.NEXT_PUBLIC_GROQ_KEY || '';
 
 export async function generateGroqResponse(
   prompt: string,

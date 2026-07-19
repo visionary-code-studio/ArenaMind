@@ -1,6 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
 
-const GEMINI_KEY = process.env.NEXT_PUBLIC_GEMINI_KEY || '';
+const GEMINI_KEY = process.env.GEMINI_KEY || process.env.NEXT_PUBLIC_GEMINI_KEY || '';
 
 // Initialize the official Google Gen AI Client
 const ai = new GoogleGenAI({ apiKey: GEMINI_KEY });
