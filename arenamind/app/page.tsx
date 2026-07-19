@@ -342,6 +342,7 @@ function AIChatPanel({ compact = false }: { compact?: boolean }) {
           onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
           placeholder="Ask ArenaMind AI... (e.g. Predict crowd congestion near Gate B)"
           className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#00f5ff]/40 font-sans transition-colors"
+          aria-label="Ask ArenaMind AI Operator Assistant"
         />
         <button
           onClick={sendMessage}
@@ -1343,6 +1344,7 @@ function FanView() {
               onKeyDown={e => e.key === 'Enter' && sendFanQuery(fanInput)}
               placeholder={`Ask ArenaMind... (${lang}) — "Where is my seat?" or "Find food"`}
               className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-white/25 focus:outline-none focus:border-[#00f5ff]/40 transition-colors"
+              aria-label="Ask ArenaMind Fan Assistant"
             />
             <button onClick={() => sendFanQuery(fanInput)} disabled={isLoading || !fanInput.trim()} className="px-5 bg-[#00f5ff] text-black rounded-xl font-hud font-bold text-[10px] disabled:opacity-40 hover:shadow-[0_0_12px_rgba(0,245,255,0.3)] transition-all">ASK</button>
           </div>

@@ -21,10 +21,10 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           className="glass p-8 md:p-12 w-full rounded-[32px] border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.8)] bg-[#0a0c16]/90 backdrop-blur-2xl overflow-y-auto max-h-[85vh] prose prose-invert prose-p:text-white/70 prose-headings:font-sora prose-h1:text-[#00f5ff] prose-h2:text-[#a855f7] prose-li:text-white/70 prose-blockquote:border-[#00f5ff] prose-blockquote:text-white/80 prose-blockquote:bg-white/5 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-a:text-[#00f5ff] max-w-none"
         >
-        <button onClick={() => router.push('/')} className="sticky top-0 mb-6 text-white/50 hover:text-[#00f5ff] transition-colors font-hud text-[10px] tracking-widest flex items-center gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-md border border-white/10 w-max z-50">
+        <button onClick={() => router.push('/')} className="sticky top-0 mb-6 text-white/50 hover:text-[#00f5ff] transition-colors font-hud text-[10px] tracking-widest flex items-center gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-md border border-white/10 w-max z-50" aria-label="Back to Home">
           ← BACK TO HOME
         </button>
-
+ 
         <h1>About ArenaMind AI</h1>
         <blockquote>
           <strong>The Generative AI Operating System for FIFA World Cup Stadiums</strong>
@@ -35,9 +35,9 @@ export default function AboutPage() {
         <p>
           By combining <strong>Generative AI, Digital Twin technology, predictive analytics, and cloud-native architecture</strong>, ArenaMind AI creates a connected ecosystem that enables safer stadiums, smoother operations, and exceptional fan experiences during the <strong>FIFA World Cup 2026</strong>.
         </p>
-
+ 
         <hr className="border-white/10 my-8" />
-
+ 
         <h2>🏆 Challenge</h2>
         <h3>Smart Stadiums & Tournament Operations</h3>
         <p>
@@ -60,9 +60,9 @@ export default function AboutPage() {
         <p className="mt-4">
           ArenaMind AI is designed specifically to address these challenges through an AI-first operational platform.
         </p>
-
+ 
         <hr className="border-white/10 my-8" />
-
+ 
         <h2>💡 Our Solution</h2>
         <h3>ArenaMind AI</h3>
         <p>
@@ -92,9 +92,9 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
-
+ 
         <hr className="border-white/10 my-8" />
-
+ 
         <h2>🚀 Vision</h2>
         <p>
           Our vision is to build the world&apos;s first <strong>Generative AI Operating System for Mega Sporting Events</strong>.
@@ -112,9 +112,9 @@ export default function AboutPage() {
           <li>Smart Cities</li>
           <li>Convention & Exhibition Centers</li>
         </ul>
-
+ 
         <hr className="border-white/10 my-8" />
-
+ 
         <h2>⚙️ Technology Stack</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
           <div>
             <h4 className="text-white">Artificial Intelligence</h4>
             <ul className="text-sm">
-              <li>Google Gemini 2.5</li>
+              <li>Google Gemini 3.5 Flash</li>
               <li>Groq (Fallback)</li>
               <li>Vertex AI</li>
               <li>Vision AI</li>

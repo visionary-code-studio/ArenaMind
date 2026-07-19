@@ -25,7 +25,7 @@ export default function TestimonialsPage() {
           animate={{ opacity: 1, scale: 1 }}
           className="w-full max-w-5xl"
         >
-        <button onClick={() => router.push('/')} className="mb-8 text-white/50 hover:text-[#00f5ff] transition-colors font-hud text-[10px] tracking-widest flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full w-max backdrop-blur-md border border-white/10">
+        <button onClick={() => router.push('/')} className="mb-8 text-white/50 hover:text-[#00f5ff] transition-colors font-hud text-[10px] tracking-widest flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full w-max backdrop-blur-md border border-white/10" aria-label="Back to Home">
           ← BACK TO HOME
         </button>
 

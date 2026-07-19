@@ -67,11 +67,12 @@ export default function Sidebar() {
         <button 
           onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
           className="text-white/50 hover:text-white transition-colors p-1 rounded-md hover:bg-white/5"
+          aria-label="Toggle Sidebar"
         >
           {isSidebarCollapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}
         </button>
       </div>
-
+ 
       {/* Nav Items */}
       <div className="flex-1 py-4 flex flex-col gap-1 overflow-y-auto overflow-x-hidden mt-4">
         {NAV_ITEMS.map((item) => {
@@ -89,6 +90,7 @@ export default function Sidebar() {
                   ? 'bg-gradient-to-r from-transparent to-[#00f5ff]/10 text-[#00f5ff]' 
                   : 'text-white/60 hover:text-white hover:bg-white/5'
               }`}
+              aria-label={item.label}
             >
               {isActive && (
                 <motion.div 
@@ -116,12 +118,13 @@ export default function Sidebar() {
           )
         })}
       </div>
-
+ 
       {/* Footer */}
       <div className="p-4 border-t border-white/5 mt-auto flex flex-col gap-2">
         <button
           onClick={() => setIsDarkMode(!isDarkMode)}
           className="flex items-center gap-3 px-2 py-3 w-full text-white/50 hover:text-white transition-colors rounded-lg hover:bg-white/5 overflow-hidden"
+          aria-label="Toggle Theme"
         >
           <div className="flex-shrink-0">
             {isDarkMode ? <Moon size={18} /> : <Sun size={18} />}
@@ -139,10 +142,11 @@ export default function Sidebar() {
             )}
           </AnimatePresence>
         </button>
-
+ 
         <button
           onClick={() => signOut(auth)}
           className="flex items-center gap-3 px-2 py-3 w-full text-white/50 hover:text-white transition-colors rounded-lg hover:bg-red-500/10 hover:text-red-400 overflow-hidden"
+          aria-label="Log Out"
         >
           <div className="flex-shrink-0">
             <LogOut size={18} />

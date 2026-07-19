@@ -20,7 +20,7 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           className="glass p-10 md:p-16 max-w-2xl w-full rounded-[32px] border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.8)] bg-[#0a0c16]/80 backdrop-blur-2xl"
         >
-        <button onClick={() => router.push('/')} className="absolute top-6 left-6 text-white/50 hover:text-[#00f5ff] transition-colors font-hud text-[10px] tracking-widest flex items-center gap-2">
+        <button onClick={() => router.push('/')} className="absolute top-6 left-6 text-white/50 hover:text-[#00f5ff] transition-colors font-hud text-[10px] tracking-widest flex items-center gap-2" aria-label="Back to Home">
           ← BACK TO HOME
         </button>
 
