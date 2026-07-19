@@ -3,6 +3,8 @@ arenamind/.next/
 arenamind/node_modules/
 arenamind/out/
 arenamind/build/
+arenamind/coverage/
+coverage/
 
 # Local env files containing API secrets
 .env

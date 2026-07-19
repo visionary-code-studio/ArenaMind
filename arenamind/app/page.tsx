@@ -1911,7 +1911,7 @@ function ProfileView() {
           />
           <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-[#00f5ff]/40 shadow-[0_0_30px_rgba(0,245,255,0.2)] bg-[#020205] flex items-center justify-center">
             {user?.photoURL ? (
-              <img src={user.photoURL} alt="Profile" className="object-cover w-full h-full" />
+              <Image src={user.photoURL} alt="Profile" className="object-cover w-full h-full" width={128} height={128} unoptimized />
             ) : (
               <span className="text-4xl text-white/20">US</span>
             )}

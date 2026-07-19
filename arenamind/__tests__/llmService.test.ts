@@ -67,4 +67,42 @@ describe('ArenaMind AI - LLM Orchestrator Service Unit Tests', () => {
     expect(result.model).toBe('local_directives_fan');
     expect(result.response).toContain('restrooms are located near Section 112');
   });
+
+  test('Should route to all other Fan local directive fallback branches', async () => {
+    mockGenerateGeminiResponse.mockRejectedValue(new Error('Gemini offline'));
+    mockGenerateGroqResponse.mockRejectedValue(new Error('Groq offline'));
+
+    // Test medical/help branch
+    const res1 = await getAIResponse('I need medical help', { context: 'fan_assistant' });
+    expect(res1.response).toContain('medical assistance has been dispatched');
+
+    // Test transport branch
+    const res2 = await getAIResponse('When is the next bus?', { context: 'fan_assistant' });
+    expect(res2.response).toContain('Shuttle buses');
+
+    // Test general fallback branch
+    const res3 = await getAIResponse('hello context info', { context: 'fan_assistant' });
+    expect(res3.response).toContain('Welcome to MetLife Stadium');
+  });
+
+  test('Should route to all other Operator local directive fallback branches', async () => {
+    mockGenerateGeminiResponse.mockRejectedValue(new Error('Gemini offline'));
+    mockGenerateGroqResponse.mockRejectedValue(new Error('Groq offline'));
+
+    // Test gate/congestion branch
+    const res1 = await getAIResponse('Gate A congestion status');
+    expect(res1.response).toContain('Gate A capacity at 94%');
+
+    // Test security/threat branch
+    const res2 = await getAIResponse('security breach warning');
+    expect(res2.response).toContain('Security posture NORMAL');
+
+    // Test medical/injury branch
+    const res3 = await getAIResponse('medical incident reported');
+    expect(res3.response).toContain('Medical incident detected');
+
+    // Test general operator fallback branch
+    const res4 = await getAIResponse('query without direct matching words');
+    expect(res4.response).toContain('operations nominal');
+  });
 });
