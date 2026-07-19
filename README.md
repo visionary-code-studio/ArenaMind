@@ -8,84 +8,67 @@
 
 ## 📌 Problem Statement
 
-Managing massive stadium events like the FIFA World Cup 2026 presents a massive logistical challenge:
-*   **Data Fragmentation**: Operations, ticketing, transport, medical dispatch, and fan support operate in disconnected silos.
-*   **Crowd Safety & Bottlenecks**: Crowd densities change in minutes, causing queue delays and high-risk gate congestions.
-*   **Unprepared Support Systems**: Standard fan assistants are basic text chatbots that hallucinate information and fail to provide multilingual support during critical moments.
-*   **Operator Latency**: Critical incident dispatchers rely on manual SOP lookups, increasing emergency response times.
+Modern stadiums are equipped with mature digital systems (CCTV cameras, ticket scanners, parking meters, dynamic signage, IoT sensors, and transport logs). However, **these systems rarely communicate intelligently with one another**:
 
-**ArenaMind AI** solves this by consolidating stadium data into an interactive, real-time command cockpit, integrating interactive 3D twins, smart navigation routers, and a secure server-side AI gateway.
+*   **Siloed Infrastructure**: Operational teams lack a unified view of stadium conditions. Security, medical, transport, and volunteer divisions work in isolation.
+*   **Reactive Decision-Making**: Current platforms only detect issues (such as gate congestion or medical emergencies) after they have already escalated. There is no predictive intelligence to alert coordinators before bottlenecking becomes dangerous.
+*   **Disconnected Fan Services**: Spectators rely on fragmented applications for ticketing, wayfinding, transit, and customer service. Support is reactive, leading to lower spectator satisfaction.
+*   **Manual Operational Latency**: Emergency dispatches and resource reassignments rely heavily on static SOP manuals and manual communication loops, costing critical seconds.
+
+---
+
+## 💡 Proposed Solution & Product Vision
+
+ArenaMind AI acts as **an intelligence orchestration layer** that sits on top of the entire stadium ecosystem. By fusing digital twin technology, real-time event telemetry, and multi-model Generative AI, it transforms stadium management from **reactive monitoring** into **proactive operational intelligence**. 
+
+Instead of asking *"What is happening?"*, operators begin asking *"What is likely to happen next?"*
+
+---
+
+## ⚡ Unique Selling Proposition (USP) & Innovations
+
+What makes ArenaMind AI completely unique and different from standard dashboards or chatbots:
+
+1.  **SOP-Grounded Decision Engine (RAG)**: Leverages Retrieval-Augmented Generation grounded with real FIFA Security, Emergency, and Gate Policy SOPs. Recommendations are never generic; they are directly mapped to active venue protocols.
+2.  **Explainable AI Framework**: The platform generates non-black-box recommendations. Every operational alert outlines:
+    *   *Diagnostic Status* (Situation assessment)
+    *   *Operational Analysis* (2-3 key driving factors)
+    *   *Mitigation Recommendations* (Numbered action list with expected impact percentages)
+    *   *AI Confidence Score* (85-99%) and *Data Sources* used.
+3.  **Role-Based Prompt & Persona Routing**: The gateway automatically customizes prompts based on user roles (Security, Medical, Volunteer, Executive, or Fan). Operators get technical dispatch screens, while fans get friendly wayfinding info in their native language (e.g. English, Spanish).
+4.  **Resilient Dual-Model API Gateway**: Features an automatic, serverless Gemini-to-Groq fallback pipeline. If the primary Gemini 3.5 Flash API encounters rate limits, the system switches to Groq Llama 3.3 in milliseconds, guaranteeing zero downtime.
+5.  **Strict Security Sandboxing**: API credentials and Firebase database secrets are wrapped strictly in server-side Next.js route handlers, keeping critical keys hidden from the client browser.
 
 ---
 
 ## 🛠️ Technological Stack
 
-ArenaMind AI is engineered using high-performance web and cloud technologies:
+Consistent with the **Technical Architecture & Engineering Specifications**, ArenaMind AI implements:
 
-<table align="center">
-  <tr>
-    <td align="center" width="160">
-      <svg width="64" height="64" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="90" cy="90" r="90" fill="black"/>
-        <path d="M149.508 153L77.0143 53.649H63V126.351H74.4539V70.7303L135.807 153H149.508Z" fill="white"/>
-        <rect x="119.546" y="53.649" width="11.4539" height="72.7022" fill="white"/>
-      </svg>
-      <br/><b>Next.js 15.5</b>
-    </td>
-    <td align="center" width="160">
-      <svg width="64" height="64" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M57.5 0L115 100H0L57.5 0Z" fill="white"/>
-      </svg>
-      <br/><b>Vercel</b>
-    </td>
-    <td align="center" width="160">
-      <svg width="64" height="64" viewBox="0 0 256 351" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 282.9L24.8 120.3L97.9 311.6L0 282.9Z" fill="#FFC24C"/>
-        <path d="M181.1 33.6L129.4 120.3L97.9 311.6L181.1 33.6Z" fill="#F48120"/>
-        <path d="M129.4 120.3L256 282.9L181.1 33.6L129.4 120.3Z" fill="#DE4C1F"/>
-      </svg>
-      <br/><b>Firebase 12.16</b>
-    </td>
-    <td align="center" width="160">
-      <svg width="64" height="64" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M128 0L238.85 64V192L128 256L17.15 192V64L128 0Z" fill="black"/>
-        <path d="M128 28L215 78.2V177.8L128 228L41 177.8V78.2L128 28Z" fill="#00F5FF"/>
-      </svg>
-      <br/><b>Three.js</b>
-    </td>
-  </tr>
-</table>
+### Frontend (Presentation & Rendering)
+*   **Next.js 15 & React 19**: Framework utilizing Server Components and client-side rendering.
+*   **React Three Fiber & Three.js**: WebGL digital twin canvas rendering the interactive 3D stadium layout.
+*   **Drei**: Three.js helper components mapping interactive seat densities and coordinate meshes.
+*   **Zustand**: Lightweight global state management.
+*   **Tailwind CSS**: Sleek, glassmorphic layout system.
+*   **Framer Motion & GSAP**: GPU-accelerated micro-animations and cinematic intro sequences.
+*   **Recharts**: Real-time analytical charting for executive dashboards.
+
+### Backend, Data, & Infrastructure
+*   **Serverless API Gateway (Next.js API Routes)**: Centralized entrypoint managing input validation, prompt assembly, and model selection.
+*   **Cloud Firestore**: Real-time NoSQL database syncing ticketing scanners, active incidents, and volunteer locations.
+*   **Firebase Authentication**: Secure role-based operator authentication.
+*   **Firebase Storage**: File bucket for avatar image uploads and digital twin model assets.
+*   **WebSocket Protocol**: Live telemetry broadcasts push updates directly to connected screens.
+
+### Artificial Intelligence & Cognitive Layer
+*   **Google Gemini 3.5 Flash**: Primary reasoning model executing complex operational queries and incident assessments.
+*   **Groq (Llama-3.3-70b-versatile)**: Automatic fallback LLM serving low-latency completions when Gemini limits are reached.
+*   **RAG (Retrieval-Augmented Generation)**: Vector search parsing regional stadium layouts, maps, and FIFA SOP guidelines.
 
 ---
 
-## ✨ Core Features
-
-*   **🌐 AI Command Center**: Centralized console for monitoring gates, emergency response, and operational indicators.
-*   **🏟️ 3D Digital Twin**: WebGL/Three.js-powered stadium canvas plotting dynamic crowd volumes, ticket logs, and queue overlays.
-*   **👥 Crowd Prediction & Management**: Estimations of egress timelines, wait times, and zone occupancy.
-*   **🗺️ Smart Fan Navigation**: Map visuals displaying pathfinding patterns and gate redirections.
-*   **🌍 Multilingual Fan Assistant**: Customer portal resolving navigation and transit queries across multiple language options.
-*   **🚌 Transport Intelligence**: Dynamic telemetry mapping shuttle buses, metro flows, and parking.
-*   **♿ Accessibility Copilot**: Central tracker for elevators, ramps, and dedicated helper dispatches.
-*   **🚑 Emergency Response Copilot**: Fast incident logger routing hazards directly to first responders.
-*   **🌱 Sustainability Insights**: Monitoring dashboard for energy consumption, HVAC usage, and recycling metrics.
-
----
-
-## ⚡ Unique Selling Proposition (USP)
-
-What makes ArenaMind AI different from standard solutions:
-
-1.  **Dual-Model Failover Architecture**: If Gemini API quotas are exhausted, the server transparently falls back to Groq Llama 3.3 in milliseconds, keeping operations active.
-2.  **Context Persona Split**: It divides response rendering: operators get structured technical diagnostics (`**DIAGNOSTIC STATUS**: ...`), while fans get conversational, helpful wayfinding text in their preferred language.
-3.  **Strict Anti-Hallucination Controls**: Utilizes zero-temperatures (`0.1`) and strict SOP validation guards to prevent incorrect recommendations.
-4.  **Security Wrapping**: All AI queries are securely executed server-side via Next.js routes, hiding sensitive keys from browser bundles.
-
----
-
-## 🤖 AI Orchestration Engine
-
-The ArenaMind AI engine routes incoming client requests through a secure server-side API Gateway to select and execute the most efficient generative model:
+## 🤖 AI Orchestration Pipeline
 
 ```mermaid
 graph TD
@@ -105,9 +88,9 @@ graph TD
 
 ---
 
-## 📅 Chronological Working Sprint (24-Hour Roadmap)
+## 📅 Chronological Development Sprint (24-Hour Roadmap)
 
-ArenaMind AI was designed, built, and deployed in a single, high-intensity 24-hour sprint:
+ArenaMind AI was engineered and deployed during a single, high-intensity 24-hour sprint:
 
 ```
 [00:00 - 04:00] ─── High-Fidelity 3D UI & WebGL Digital Twin Setup
